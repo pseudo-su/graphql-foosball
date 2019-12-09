@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4');
-const { leagues } = require('./memory-store');
+const { leagues, user_league_membership } = require('./memory-store');
 
 module.exports = {
   getLeague,
@@ -33,6 +33,21 @@ function getLeague(id) {
     .find(l => l.id === id);
 }
 
-function searchLeagues() {
-  return leagues.filter(l => l.deleted !== true);
+function searchLeagues({ userId = null }) {
+  let _leagues = leagues
+    .filter(l => l.deleted !== true);
+
+  if (userId !== null) {
+    const userLeagues = user_league_membership
+      .filter(
+        m => m.userId == userId,
+      )
+      .map(m => m.leagueId)
+
+    _legues = _leagues
+      .filter(l => userLeagues.includes(l.id))
+  }
+  console.log(_leagues)
+
+  return _leagues;
 }

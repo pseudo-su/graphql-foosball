@@ -5,17 +5,25 @@ const { print } = require('graphql/language/printer');
 module.exports = {
   postQuery,
 };
+
 const API = 'http://localhost:4000/';
 
-async function postQuery(query, authToken = '1') {
+const defaultHeaders = {
+  Authorization: '1',
+}
+
+async function postQuery(query, variables = {}, headers = defaultHeaders) {
+  console.log(print(query))
   const response = await rp({
     method: 'POST',
     uri: API,
-    headers: {
-      Authorization: authToken,
+    headers: headers,
+    body: {
+      query: print(query),
+      variables,
     },
-    body: { query: print(query) },
     json: true,
   });
+  // console.log(JSON.stringify(response, null, 2));
   return response;
 }

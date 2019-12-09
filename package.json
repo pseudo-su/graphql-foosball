@@ -7,7 +7,13 @@
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "test:unit": "jest src/",
-    "test:integration": "jest integration-test/"
+    "test:integration": "jest integration-test/",
+    "test:integration:00": "jest integration-test/00*",
+    "test:integration:01": "jest integration-test/00*",
+    "test:integration:02": "jest integration-test/00* integration-test/02*",
+    "test:integration:03": "jest integration-test/00* integration-test/02*",
+    "test:integration:04": "jest integration-test/00* integration-test/02* integration-test/04*",
+    "test:integration:05": "jest integration-test/00* integration-test/02* integration-test/04* integration-test/05*"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +22,9 @@
     "jest": "^24.9.0",
     "nodemon": "^2.0.1",
     "request-promise": "^4.2.5"
+  },
+  "engines": {
+    "node": "10.16.x",
+    "yarn": "DO_NOT_USE"
   }
 }

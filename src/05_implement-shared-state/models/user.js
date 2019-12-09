@@ -1,5 +1,5 @@
 const uuidv4 = require('uuid/v4');
-const { users } = require('./memory-store');
+const { users, user_match_membership } = require('./memory-store');
 
 module.exports = {
   signupUser,
@@ -42,7 +42,6 @@ function getUser(id) {
 }
 
 function getUserByAuthToken(authToken) {
-  console.log(users)
   return users
     .filter(p => p.deleted !== true)
     .find(p => p.authToken === authToken);
@@ -54,6 +53,18 @@ function getUserByUsername(username) {
     .find(p => p.authToken === authToken);
 }
 
-function searchUsers() {
-  return users.filter(l => l.deleted !== true);
+function searchUsers({ matchId = null }) {
+  let _users = users.filter(l => l.deleted !== true);
+  if (matchId !== null) {
+    const members = user_match_membership
+      .filter(m => m.matchId === matchId);
+    const memberIds = members.map(m => m.userId);
+    _users = _users
+      .filter(u => memberIds.includes(u.id))
+      .map(u => ({
+        ...u,
+        team: members.find(m => m.matchId === matchId && m.userId === u.id)
+      }));
+  }
+  return _users;
 }

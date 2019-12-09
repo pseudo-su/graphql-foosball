@@ -37,6 +37,11 @@ function getTable(id) {
     .find(t => t.id === id);
 }
 
-function searchTables() {
-  return tables.filter(l => l.deleted !== true);
+function searchTables({ userId = null }) {
+  const _tables = tables.filter(l => l.deleted !== true);
+  if (userId !== null) {
+    return _tables
+      .filter(t => t.userId === userId)
+  }
+  return _tables
 }

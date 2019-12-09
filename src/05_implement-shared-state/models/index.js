@@ -1,5 +1,6 @@
 module.exports = {
   ...require('./league'),
-  ...require('./user'),
+  ...require('./match'),
   ...require('./table'),
+  ...require('./user'),
 };

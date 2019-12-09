@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Query seed data gets the name for the logged in user 1`] = `"John Stableford"`;
