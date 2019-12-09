@@ -26,7 +26,7 @@ Test using
 > npm run test:integration:02
 ```
 
-## Todo
+## Steps
 
 - `Query.leagues`
 - `Query.users`

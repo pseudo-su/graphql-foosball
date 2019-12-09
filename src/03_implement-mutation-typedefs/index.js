@@ -1,27 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
-const models = require('./models');
-// const { resolvers } = require('./resolvers');
 const { typeDefs } = require('./schema.graphql');
-
-async function contextFn({ req }) {
-  let authToken = null;
-  let currentUser = null;
-
-   try {
-      authToken = req.headers["authorization"];
-
-      if (authToken) {
-           currentUser = models.getUserByAuthToken(authToken);
-      }
-   } catch (e) {
-      console.warn(`Unable to authenticate using auth token: ${authToken}`);
-   }
-  return {
-      authToken,
-      currentUser,
-  };
-}
-
 
 const resolvers = {
   Query: {
@@ -64,8 +42,7 @@ const resolvers = {
 
 const server = new ApolloServer({
   typeDefs, 
-  resolvers, 
-  context: contextFn,
+  resolvers,
   schemaDirectives: {},
 });
 

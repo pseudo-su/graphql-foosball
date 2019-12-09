@@ -26,7 +26,7 @@ Test using
 > npm run test:integration:00
 ```
 
-## Todo
+## Steps
 
 - import the `gql` and `ApolloServer
 - create `typeDefs` and `resolvers`

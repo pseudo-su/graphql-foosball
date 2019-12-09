@@ -15,27 +15,6 @@ const typeDefs = gql`
     me: User!
   }
 
-  type Mutation {
-    # User creation/login
-    userSignup(username: String!, firstName: String!): User
-    userLogin(username: String!, password: String!): AuthToken
-
-    # Any user can create tables, leagues and matches
-    createTable(name: String!, leagueIds: [ID!]!): Table
-    createLeague(name: String!): League
-    createMatch(input: CreateMatchInput!): Match
-
-    # User can enter themselves in a league
-    enterLeague(leagueId: ID!): Boolean!
-
-    startMatch(matchId: ID!): Match!
-    # Add a point for one of the teams for a specific match
-    scoreMatchPoint(matchId: ID!, team: MatchTeam!): Match!
-    # A table can broadcast that a point was scored on it
-    # the application then needs to determine if/what match the point is registered against
-    scoreTablePoint(tableId: ID!, color: MatchTeamColor!): Match!
-  }
-
   # --- LEAGUE
 
   type League {
@@ -61,6 +40,7 @@ const typeDefs = gql`
     TEAM_A
     TEAM_B
   }
+
   enum MatchTeamColor {
     WHITE
     YELLOW
@@ -70,19 +50,6 @@ const typeDefs = gql`
     CREATED
     INPROGRESS
     COMPLETE
-  }
-
-  input MatchPlayerInput {
-    userId: ID!
-    team: MatchTeam!
-  }
-
-  input CreateMatchInput {
-    leagueId: ID!
-    tableId: ID!
-    players: [MatchPlayerInput!]!
-    teamAColor: MatchTeamColor
-    teamBColor: MatchTeamColor
   }
 
   type MatchPlayer {
@@ -95,6 +62,10 @@ const typeDefs = gql`
     id: ID!
     status: MatchStatus!
     players(team: MatchTeam): [MatchPlayer!]!
+    teamAScore: Int!
+    teamAColor: MatchTeamColor
+    teamBScore: Int!
+    teamBColor: MatchTeamColor
     table: Table!
     league: League!
   }
