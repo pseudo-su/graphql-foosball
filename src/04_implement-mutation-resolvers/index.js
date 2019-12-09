@@ -10,21 +10,6 @@ const resolvers = {
 
     me: () => ({ id: 'user-1' }),
   },
-  Mutation: {
-    userSignup: () => ({ id: 'user-1' }),
-    userLogin: () => ({ jwtToken: 'some-token' }),
-
-    createTable: () => ({ id: 'table-1' }),
-    createLeague: () => ({ id: 'league-1' }),
-    createMatch: () => ({ id: 'match-1' }),
-
-    enterLeague: () => true,
-
-    startMatch: () => ({ id: 'match-1' }),
-
-    scoreMatchPoint: () => ({ id: 'match-1' }),
-    scoreTablePoint: () => ({ id: 'match-1' })
-  },
   League: {
     id: parent => parent.id,
     name: () => 'League 1',
@@ -40,10 +25,6 @@ const resolvers = {
   Match: {
     id: parent => parent.id,
     status: () => 'CREATED',
-    teamAScore: () => 0,
-    teamAColor: () => 'WHITE',
-    teamBScore: () => 0,
-    teamBColor: () => 'yellow',
     table: () => ({ id: 'table-1' }),
     league: () => ({ id: 'league-1' }),
     players: () => [{ id: 'match-1_user-1' }, { id: 'match-1_user-2' }],

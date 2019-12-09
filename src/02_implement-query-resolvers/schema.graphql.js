@@ -2,8 +2,6 @@ const { gql } = require('apollo-server');
 
 // Construct a schema, using GraphQL schema language
 const typeDefs = gql`
-  scalar AuthToken
-
   type Query {
     # admin can read all tables, leagues, matches
     tables: [Table!]!
