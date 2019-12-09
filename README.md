@@ -29,12 +29,14 @@ start the (hot reloading) dev server:
 npm run dev
 ```
 
-run the integration tests:
+While the server is you will be able to run the integration tests in a seperate terminal session:
 
 ```sh
 # EG npm run test:integration:<tasknum>
 npm run test:integration:00
 ```
+
+To move through the different tasks/checkpoints you should be able to comment/uncomment lines from the `src/index.js` file.
 
 ### Tests
 

@@ -1,9 +1,9 @@
 const { ApolloServer, gql } = require('apollo-server');
-const { typeDefs } = require('schema.graphql');
+const { typeDefs } = require('./schema.graphql');
 
 const resolvers = {
   Query: {
-    me: () => ({ id: 'ID', username: 'jstableford' })
+    me: () => ({ id: 'ID', username: 'jstableford' }),
   }
 };
 

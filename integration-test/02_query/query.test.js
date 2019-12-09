@@ -50,13 +50,14 @@ const queries = [
       tables {
         id
         name
-        league {
+        leagues {
           id
           name
         }
         creator {
           id
-          name
+          username
+          firstName
         }
       }
     }
@@ -76,7 +77,9 @@ const queries = [
         status
         players {
           id
-          userId
+          user {
+            id
+          }
           team
         }
         league {

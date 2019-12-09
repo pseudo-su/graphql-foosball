@@ -32,6 +32,8 @@ const resolvers = {
   Table: {
     id: parent => parent.id,
     name: () => 'Table 1',
+    leagues: () => [{ id: 'league-1' }],
+    creator: () => ({ id: 'user-1' }),
   },
   User: {
     id: parent => parent.id,

@@ -1,8 +1,8 @@
 const { gql } = require('apollo-server');
 const { postQuery } = require('../query');
 
-describe('Validate that the resolvers adhere to the query schema', () => {
-  it(`Simple query ${query.definitions[0].name.value}`, async () => {
+describe('Server Exists', () => {
+  it(`Simple query`, async () => {
     const query = gql`
       query getMe {
         me {
