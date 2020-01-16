@@ -13,6 +13,9 @@ We have a working server responding to a simple graphql query
 
 The following describes details about the data model:
 
+- A user
+  - Can own many tables
+  - Can own many leagues
 - A table
   - Is owned by a user
   - Can be assigned to multiple leagues
@@ -28,9 +31,6 @@ The following describes details about the data model:
   - Each player is either on team "A" or "B"
   - Each team is assigned a color of `WHITE` or `YELLOW`
   - Keeps track of the points scored for team A and team B
-- A user
-  - Can own many tables
-  - Can own many leagues
 
 The typedefs should support users querying the following information:
 

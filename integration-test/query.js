@@ -13,7 +13,6 @@ const defaultHeaders = {
 }
 
 async function postQuery(query, variables = {}, headers = defaultHeaders) {
-  console.log(print(query))
   const response = await rp({
     method: 'POST',
     uri: API,

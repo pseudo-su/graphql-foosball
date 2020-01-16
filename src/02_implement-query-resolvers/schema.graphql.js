@@ -5,7 +5,7 @@ const typeDefs = gql`
   type Query {
     # admin can read all tables, leagues, matches
     tables: [Table!]!
-    leagues: [League]!
+    leagues: [League!]!
     matches: [Match!]!
     users: [User!]!
 
